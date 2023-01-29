@@ -1,23 +1,7 @@
 package com.company.design;
 
 import com.company.design.adapter.*;
-import com.company.design.decorator.*;
-import com.company.design.facade.Ftp;
-import com.company.design.facade.Reader;
-import com.company.design.facade.SftpClient;
-import com.company.design.facade.Writer;
-import com.company.design.observer.Button;
-import com.company.design.observer.IButtonListener;
-import com.company.design.proxy.AopBrowser;
-import com.company.design.proxy.Browser;
-import com.company.design.proxy.BrowserProxy;
-import com.company.design.proxy.IBrowser;
-import com.company.design.singleton.AClazz;
-import com.company.design.singleton.BClazz;
-import com.company.design.singleton.SocketClient;
 import com.company.design.strategy.*;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
 
@@ -141,7 +125,7 @@ public class Main {
 
         EncodingStrategy base64 = new Base64Strategy();
 
-        EncodingStrategy normal = new NomalStrategy();
+        EncodingStrategy normal = new NormalStrategy();
 
         String message = "hello java";
 
