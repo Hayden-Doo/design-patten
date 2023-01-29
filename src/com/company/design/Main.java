@@ -2,6 +2,10 @@ package com.company.design;
 
 import com.company.design.adapter.*;
 import com.company.design.decorator.*;
+import com.company.design.facade.Ftp;
+import com.company.design.facade.Reader;
+import com.company.design.facade.SftpClient;
+import com.company.design.facade.Writer;
 import com.company.design.observer.Button;
 import com.company.design.observer.IButtonListener;
 import com.company.design.proxy.AopBrowser;
@@ -94,21 +98,42 @@ public class Main {
 //        audiA5.showPrice();
 
 //        Observer
-        Button button = new Button("buttonName");
+//        Button button = new Button("buttonName");
+//
+//        button.addListener(new IButtonListener() {
+//            @Override
+//            public void clickEvent(String eventMessage) {
+//                System.out.println(eventMessage);
+//            }
+//        });
+//        button.click("send message : click 1");
+//        button.click("send message : click 2");
+//        button.click("send message : click 3");
 
-        button.addListener(new IButtonListener() {
-            @Override
-            public void clickEvent(String eventMessage) {
-                System.out.println(eventMessage);
-            }
-        });
-        button.click("send message : click 1");
-        button.click("send message : click 2");
-        button.click("send message : click 3");
+//        Facade
+//        Without Facade
+//        Ftp ftpClient = new Ftp("www.doo.com", 22, "/home");
+//        ftpClient.connect();
+//        ftpClient.moveDirectory();
+//
+//        Writer writer = new Writer("text.txt");
+//        writer.fileConnect();
+//        writer.fileWriter();
+//
+//        Reader reader = new Reader("text.txt");
+//        reader.fileConnect();
+//        reader.fileRead();
+//
+//        writer.fileDisconnect();
+//        reader.fileDisconnect();
+//        ftpClient.disConnect();
 
-
-
-
+//        With Facade
+        SftpClient sftpClient = new SftpClient("www.doo.com", 22, "/home", "text.txt");
+        sftpClient.connect();
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disConnect();
     }
 
     // 콘센트
