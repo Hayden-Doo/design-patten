@@ -2,6 +2,8 @@ package com.company.design;
 
 import com.company.design.adapter.*;
 import com.company.design.decorator.*;
+import com.company.design.observer.Button;
+import com.company.design.observer.IButtonListener;
 import com.company.design.proxy.AopBrowser;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
@@ -79,17 +81,30 @@ public class Main {
 //        System.out.println("loading time : " + end.get());
 
 //        Decorator
-        ICar audi = new Audi(1000);
-        audi.showPrice();
+//        ICar audi = new Audi(1000);
+//        audi.showPrice();
+//
+//        ICar audiA3 = new A3(audi, "A3");
+//        audiA3.showPrice();
+//
+//        ICar audiA4 = new A4(audi, "A4");
+//        audiA4.showPrice();
+//
+//        ICar audiA5 = new A5(audi, "A5");
+//        audiA5.showPrice();
 
-        ICar audiA3 = new A3(audi, "A3");
-        audiA3.showPrice();
+//        Observer
+        Button button = new Button("buttonName");
 
-        ICar audiA4 = new A4(audi, "A4");
-        audiA4.showPrice();
-
-        ICar audiA5 = new A5(audi, "A5");
-        audiA5.showPrice();
+        button.addListener(new IButtonListener() {
+            @Override
+            public void clickEvent(String eventMessage) {
+                System.out.println(eventMessage);
+            }
+        });
+        button.click("send message : click 1");
+        button.click("send message : click 2");
+        button.click("send message : click 3");
 
 
 
