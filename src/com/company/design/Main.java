@@ -1,6 +1,7 @@
 package com.company.design;
 
 import com.company.design.adapter.*;
+import com.company.design.decorator.*;
 import com.company.design.proxy.AopBrowser;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
@@ -55,27 +56,44 @@ public class Main {
 
 //        Proxy AOP
 
-        AtomicLong start = new AtomicLong();
-        AtomicLong end = new AtomicLong();
+//        AtomicLong start = new AtomicLong();
+//        AtomicLong end = new AtomicLong();
+//
+//        IBrowser aopBrowser = new AopBrowser("www.google.com",
+//                () -> {
+//                    System.out.println("before");
+//                    start.set(System.currentTimeMillis());
+//                },
+//                () -> {
+//                    System.out.println("after");
+//                    long now = System.currentTimeMillis();
+//                    end.set(now - start.get());
+//                }
+//        );
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
+//
+//        System.out.println("--------------------");
+//
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
 
-        IBrowser aopBrowser = new AopBrowser("www.google.com",
-                () -> {
-                    System.out.println("before");
-                    start.set(System.currentTimeMillis());
-                },
-                () -> {
-                    System.out.println("after");
-                    long now = System.currentTimeMillis();
-                    end.set(now - start.get());
-                }
-        );
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
+//        Decorator
+        ICar audi = new Audi(1000);
+        audi.showPrice();
 
-        System.out.println("--------------------");
+        ICar audiA3 = new A3(audi, "A3");
+        audiA3.showPrice();
 
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
+        ICar audiA4 = new A4(audi, "A4");
+        audiA4.showPrice();
+
+        ICar audiA5 = new A5(audi, "A5");
+        audiA5.showPrice();
+
+
+
+
     }
 
     // 콘센트
